@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com.reto2'
+group = 'com.orms'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -13,6 +13,8 @@ repositories {
 }
 
 dependencies {
+	compile('org.modelmapper:modelmapper:1.1.0')
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
