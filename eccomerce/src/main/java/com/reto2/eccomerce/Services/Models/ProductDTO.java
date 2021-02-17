@@ -1,27 +1,18 @@
 package com.reto2.eccomerce.Services.Models;
 
 public class ProductDTO {
-    private static int idCount = 0;
-    private int id;
     private String nombre;
     private double precio;
     private String img;
 
-    public Product(){}
+    public ProductDTO(){}
 
-    public Product(String nombre, double precio, String img) {
-        this.id = ++idCount;
+    public ProductDTO(String nombre, double precio, String img) {
         this.nombre = nombre;
         this.precio = precio;
         this.img = img;
     }
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getNombre() {
         return nombre;
     }

@@ -4,26 +4,17 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class OrderDTO {
-    private static int idCount = 0;
-    private int id = 0;
     private String fecha;
     private String username;
     private String estado;
 
-    public Order(){}
+    public OrderDTO(){}
 
-    public Order(String username, int estado) {
-        this.id = ++idCount;
+    public OrderDTO(String username, int estado) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         this.fecha = formatter.format(new Date());
         this.username = username;
         setEstado(estado);
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
     public String getFecha() {
         return fecha;

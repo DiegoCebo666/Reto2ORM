@@ -2,17 +2,17 @@ package com.reto2.eccomerce.Services.Models;
 
 import java.util.ArrayList;
 
-import com.eccomerce.diegocebollero.eccomerce.Model.Support.ProductQuantity;
+import com.reto2.eccomerce.Services.Models.Support.ProductQuantityDTO;
 
 public class OrderProductDTO {
     private static int idCount = 0;
     private int id;
     private int idorder;
-    private ArrayList<ProductQuantity> productCantidad;
+    private ArrayList<ProductQuantityDTO> productCantidad;
 
-    public OrderProduct(){}
+    public OrderProductDTO(){}
 
-    public OrderProduct(int idorder, ArrayList<ProductQuantity> productCantidad){
+    public OrderProductDTO(int idorder, ArrayList<ProductQuantityDTO> productCantidad){
         this.id = ++idCount;
         this.idorder = idorder;
         this.productCantidad = productCantidad;
@@ -30,10 +30,10 @@ public class OrderProductDTO {
     public void setIdorder(int idorder) {
         this.idorder = idorder;
     }
-    public ArrayList<ProductQuantity> getProductCantidad() {
+    public ArrayList<ProductQuantityDTO> getProductCantidad() {
         return productCantidad;
     }
-    public void setProductCantidad(ArrayList<ProductQuantity> productCantidad) {
+    public void setProductCantidad(ArrayList<ProductQuantityDTO> productCantidad) {
         this.productCantidad = productCantidad;
     }
 }

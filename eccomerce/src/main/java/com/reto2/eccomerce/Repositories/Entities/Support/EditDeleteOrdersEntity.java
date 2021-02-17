@@ -1,28 +1,28 @@
 package com.reto2.eccomerce.Repositories.Entities.Support;
 
-import com.eccomerce.diegocebollero.eccomerce.Model.OrderProduct;
+import com.reto2.eccomerce.Repositories.Entities.OrderProductEntity;
 
 public class EditDeleteOrdersEntity {
-    private OrderProduct edit;
-    private OrderProduct delete;
+    private OrderProductEntity edit;
+    private OrderProductEntity delete;
 
-    public EditDeleteOrders(){}
+    public EditDeleteOrdersEntity(){}
 
-    public EditDeleteOrders(OrderProduct edit, OrderProduct delete){
+    public EditDeleteOrdersEntity(OrderProductEntity edit, OrderProductEntity delete){
         this.edit = edit;
         this.delete = delete;
     }
 
-    public OrderProduct getEdit() {
+    public OrderProductEntity getEdit() {
         return edit;
     }
-    public void setEdit(OrderProduct edit) {
+    public void setEdit(OrderProductEntity edit) {
         this.edit = edit;
     }
-    public OrderProduct getDelete() {
+    public OrderProductEntity getDelete() {
         return delete;
     }
-    public void setDelete(OrderProduct delete) {
+    public void setDelete(OrderProductEntity delete) {
         this.delete = delete;
     }
 }

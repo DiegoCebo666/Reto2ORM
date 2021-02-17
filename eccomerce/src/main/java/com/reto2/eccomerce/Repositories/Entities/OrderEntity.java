@@ -1,28 +1,32 @@
 package com.reto2.eccomerce.Repositories.Entities;
 
 import java.util.Date;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import java.text.SimpleDateFormat;
 
 public class OrderEntity {
-    private static int idCount = 0;
-    private int id = 0;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String fecha;
     private String username;
     private String estado;
 
-    public Order(){}
+    public OrderEntity(){}
 
-    public Order(String username, int estado) {
-        this.id = ++idCount;
+    public OrderEntity(String username, int estado) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         this.fecha = formatter.format(new Date());
         this.username = username;
         setEstado(estado);
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFecha() {

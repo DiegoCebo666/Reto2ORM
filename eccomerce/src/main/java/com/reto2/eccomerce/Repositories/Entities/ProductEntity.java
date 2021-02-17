@@ -1,25 +1,30 @@
 package com.reto2.eccomerce.Repositories.Entities;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class ProductEntity {
-    private static int idCount = 0;
-    private int id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String nombre;
     private double precio;
+    @Column(length = 5000)
     private String img;
 
-    public Product(){}
+    public ProductEntity(){}
 
-    public Product(String nombre, double precio, String img) {
-        this.id = ++idCount;
+    public ProductEntity(String nombre, double precio, String img) {
         this.nombre = nombre;
         this.precio = precio;
         this.img = img;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNombre() {

@@ -4,9 +4,9 @@ public class ProductQuantityEntity {
     private int idproduct;
     private int cantidad;
 
-    public ProductQuantity(){}
+    public ProductQuantityEntity(){}
 
-    public ProductQuantity(int idproduct, int cantidad){
+    public ProductQuantityEntity(int idproduct, int cantidad){
         this.idproduct = idproduct;
         this.cantidad = cantidad;
     }

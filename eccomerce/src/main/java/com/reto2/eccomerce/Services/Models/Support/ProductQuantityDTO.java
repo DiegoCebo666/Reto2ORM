@@ -4,9 +4,9 @@ public class ProductQuantityDTO {
     private int idproduct;
     private int cantidad;
 
-    public ProductQuantity(){}
+    public ProductQuantityDTO(){}
 
-    public ProductQuantity(int idproduct, int cantidad){
+    public ProductQuantityDTO(int idproduct, int cantidad){
         this.idproduct = idproduct;
         this.cantidad = cantidad;
     }

@@ -1,28 +1,28 @@
 package com.reto2.eccomerce.Services.Models.Support;
 
-import com.eccomerce.diegocebollero.eccomerce.Model.OrderProduct;
+import com.reto2.eccomerce.Services.Models.OrderProductDTO;
 
 public class EditDeleteOrdersDTO {
-    private OrderProduct edit;
-    private OrderProduct delete;
+    private OrderProductDTO edit;
+    private OrderProductDTO delete;
 
-    public EditDeleteOrders(){}
+    public EditDeleteOrdersDTO(){}
 
-    public EditDeleteOrders(OrderProduct edit, OrderProduct delete){
+    public EditDeleteOrdersDTO(OrderProductDTO edit, OrderProductDTO delete){
         this.edit = edit;
         this.delete = delete;
     }
 
-    public OrderProduct getEdit() {
+    public OrderProductDTO getEdit() {
         return edit;
     }
-    public void setEdit(OrderProduct edit) {
+    public void setEdit(OrderProductDTO edit) {
         this.edit = edit;
     }
-    public OrderProduct getDelete() {
+    public OrderProductDTO getDelete() {
         return delete;
     }
-    public void setDelete(OrderProduct delete) {
+    public void setDelete(OrderProductDTO delete) {
         this.delete = delete;
     }
 }
