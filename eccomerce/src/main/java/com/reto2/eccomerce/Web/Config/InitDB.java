@@ -13,7 +13,12 @@ public class InitDB {
     @Bean
     CommandLineRunner initDatabase (OrdersRepository oRepository, ProductsRepository pRepository){
         return args -> {
-            
+            oRepository.save(new Order("PIPO", 2));
+            pRepository.save(new Product("PIPELUCHE", 14.99, "https://cdn1.peluchilandia.es/3304-home_default/peluche-perrito-melancolico.jpg"));
+            pRepository.save(new Product("PIPOYOYO", 16.99, "https://www.jugarijugar.com/1057-large_default/yo-yo-de-madera-natural.jpg"));
+            pRepository.save(new Product("PIPOCAMELLO", 9.99, "https://www.oasysparquetematico.com/wp-content/uploads/2019/04/shutterstock_199591094.jpg"));
+            pRepository.save(new Product("PIPOSAURIO", 6.66, "https://www.mrbooks.com/mrbooks/portadas/9789506031718.jpg"));
+            pRepository.save(new Product("PIPOKIMON", 69.69, "https://images-na.ssl-images-amazon.com/images/I/81wESosz9eL._AC_SY355_.jpg"));
         };
     }
 }

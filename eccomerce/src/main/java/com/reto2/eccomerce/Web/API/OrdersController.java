@@ -24,12 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/orders")
 public class OrdersController {
-    public static ArrayList<Order> orders = new ArrayList<>(Arrays.asList(new Order("PIPO", 2),
-            new Order("PIPO", 2), new Order("PIPO", 2)));
-
-    public static ArrayList<OrderProduct> orderProducts = new ArrayList<>(
-            Arrays.asList(new OrderProduct(1, new ArrayList<>(Arrays.asList(new ProductQuantity(1, 78), new ProductQuantity(3, 231)))), new OrderProduct(1, new ArrayList<>(Arrays.asList(new ProductQuantity(1, 78), new ProductQuantity(3, 231)))), new OrderProduct(2, new ArrayList<>(Arrays.asList(new ProductQuantity(1, 78), new ProductQuantity(3, 231)))), new OrderProduct(3, new ArrayList<>(Arrays.asList(new ProductQuantity(1, 78), new ProductQuantity(3, 231))))));
-
     @GetMapping
     public ArrayList<Order> getOrders() {
         return orders;
