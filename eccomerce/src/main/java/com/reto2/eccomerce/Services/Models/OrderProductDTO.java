@@ -5,35 +5,33 @@ import java.util.ArrayList;
 import com.reto2.eccomerce.Services.Models.Support.ProductQuantityDTO;
 
 public class OrderProductDTO {
-    private static int idCount = 0;
-    private int id;
-    private int idorder;
-    private ArrayList<ProductQuantityDTO> productCantidad;
+    private Long idorder;
+    private Long idproduct;
+    private int quantity;
 
     public OrderProductDTO(){}
 
-    public OrderProductDTO(int idorder, ArrayList<ProductQuantityDTO> productCantidad){
-        this.id = ++idCount;
+    public OrderProductDTO(Long idorder, Long idproduct, int quantity){
         this.idorder = idorder;
-        this.productCantidad = productCantidad;
+        this.idproduct = idproduct;
+        this.quantity = quantity;
     }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public int getIdorder() {
+    public Long getIdorder() {
         return idorder;
     }
-    public void setIdorder(int idorder) {
+    public void setIdorder(Long idorder) {
         this.idorder = idorder;
     }
-    public ArrayList<ProductQuantityDTO> getProductCantidad() {
-        return productCantidad;
+    public Long getIdproduct() {
+        return idproduct;
     }
-    public void setProductCantidad(ArrayList<ProductQuantityDTO> productCantidad) {
-        this.productCantidad = productCantidad;
+    public void setIdproduct(Long idproduct) {
+        this.idproduct = idproduct;
+    }
+    public int getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

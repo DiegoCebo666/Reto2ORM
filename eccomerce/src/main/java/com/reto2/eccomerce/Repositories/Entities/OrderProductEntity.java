@@ -1,21 +1,30 @@
 package com.reto2.eccomerce.Repositories.Entities;
 
+import javax.annotation.processing.Generated;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import java.lang.invoke.InjectedProfile;
 import java.util.ArrayList;
 
 import com.reto2.eccomerce.Repositories.Entities.Support.ProductQuantityEntity;
 
+@Table(name="OrderProducts")
+@Entity(name="OrderProducts")
 public class OrderProductEntity {
-    private static int idCount = 0;
-    private int id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private int idorder;
-    private ArrayList<ProductQuantityEntity> productCantidad;
+    private int idproduct;
+    private int quantity;
 
     public OrderProductEntity(){}
 
-    public OrderProductEntity(int idorder, ArrayList<ProductQuantityEntity> productCantidad){
-        this.id = ++idCount;
+    public OrderProductEntity(int idorder, int idproduct, int quantity){
         this.idorder = idorder;
-        this.productCantidad = productCantidad;
+        this.idproduct = idproduct;
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -30,10 +39,16 @@ public class OrderProductEntity {
     public void setIdorder(int idorder) {
         this.idorder = idorder;
     }
-    public ArrayList<ProductQuantityEntity> getProductCantidad() {
-        return productCantidad;
+    public int getIdproduct() {
+        return idproduct;
     }
-    public void setProductCantidad(ArrayList<ProductQuantityEntity> productCantidad) {
-        this.productCantidad = productCantidad;
+    public void setIdproduct(int idproduct) {
+        this.idproduct = idproduct;
+    }
+    public int getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 
 import java.text.SimpleDateFormat;
 
+@Table(name="Orders")
+@Entity(name="Orders")
 public class OrderEntity {
     @Id
     @GeneratedValue

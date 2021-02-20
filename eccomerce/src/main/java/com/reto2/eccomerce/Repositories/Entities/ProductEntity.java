@@ -1,9 +1,13 @@
 package com.reto2.eccomerce.Repositories.Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Table(name="Products")
+@Entity(name="Products")
 public class ProductEntity {
     @Id
     @GeneratedValue
