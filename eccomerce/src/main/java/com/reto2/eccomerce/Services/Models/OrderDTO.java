@@ -1,21 +1,10 @@
 package com.reto2.eccomerce.Services.Models;
 
-import java.util.Date;
-import java.text.SimpleDateFormat;
-
 public class OrderDTO {
     private String fecha;
     private String username;
     private String estado;
 
-    public OrderDTO(){}
-
-    public OrderDTO(String username, int estado) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        this.fecha = formatter.format(new Date());
-        this.username = username;
-        setEstado(estado);
-    }
     public String getFecha() {
         return fecha;
     }
@@ -31,19 +20,7 @@ public class OrderDTO {
     public String getEstado() {
         return estado;
     }
-    public void setEstado(int estado) {
-        if(estado > 5 || estado < 1){
-            this.estado = "Estado not found";
-        }else if(estado == 1){
-            this.estado = "En curso";
-        }else if(estado == 2){
-            this.estado = "Enviado";
-        }else if(estado == 3){
-            this.estado = "Aceptado";
-        }else if(estado == 4){
-            this.estado = "Entregado";
-        }else{
-            this.estado = "Cancelado";
-        }
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

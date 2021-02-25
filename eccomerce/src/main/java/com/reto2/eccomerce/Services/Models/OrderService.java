@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.orms.orms.Repositories.Entities.OrderEntity;
-import com.orms.orms.Repositories.Interfaces.OrdersRepository;
+import com.reto2.eccomerce.Repositories.Entities.OrderEntity;
+import com.reto2.eccomerce.Repositories.Interfaces.OrdersRepository;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +19,6 @@ public class OrderService {
 
     public List<OrderDTO> getAll(){
         return orderRepository.findAll().stream().map(x -> modelMapper.map(x, OrderDTO.class)).collect(Collectors.toList());
-    }
-
-    public List<OrderDTO> findByUserId(Long userId){
-        var result = orderRepository.findByUserId(userId).stream().map(x -> modelMapper.map(x, OrderDTO.class)).collect(Collectors.toList());
-        return result;
-    }
-
-    public List<OrderDTO> findBySalario(float salario){
-        var result = orderRepository.findBySalario(salario).stream().map(x -> modelMapper.map(x, OrderDTO.class)).collect(Collectors.toList());
-        return result;
     }
 
     public OrderDTO add(OrderDTO order){
