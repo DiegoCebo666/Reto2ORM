@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.reto2.eccomerce.Repositories.Entities.OrderEntity;
+import com.reto2.eccomerce.Repositories.Entities.OrderProductEntity;
 import com.reto2.eccomerce.Repositories.Interfaces.OrdersRepository;
 
 import org.modelmapper.ModelMapper;
@@ -40,12 +41,8 @@ public class OrderService {
         }
     }
 
-    public Optional<OrderDTO> findById(Long id){
-        Optional<OrderEntity> entity = orderRepository.findById(id);
-        if(entity.isPresent())
-            return Optional.of(modelMapper.map(entity.get(), OrderDTO.class));
-        else
-            return Optional.empty();
+    public List<OrderProductDTO> findById(Long id){
+        return orderRepository.findOrderProductsById(id).stream().map(x -> modelMapper.map(x, OrderProductDTO.class)).collect(Collectors.toList());
     }
 
 }

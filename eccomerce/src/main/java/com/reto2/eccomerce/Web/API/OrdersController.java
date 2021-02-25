@@ -3,10 +3,13 @@ package com.reto2.eccomerce.Web.API;
 import java.util.List;
 
 import com.reto2.eccomerce.Services.Models.OrderDTO;
+import com.reto2.eccomerce.Services.Models.OrderProductDTO;
 import com.reto2.eccomerce.Services.Models.OrderService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +29,13 @@ public class OrdersController {
     public List<OrderDTO> getOrders() {
         return orderService.getAll();
     }
+
+    @GetMapping("{id}")
+    public List<OrderProductDTO> getOrderById(@PathVariable(name = "id", required = true) Long id) {
+        return orderService.findById(id);
+    }
+
+
     // @GetMapping
     // public ArrayList<Order> getOrders() {
     //     return orders;
