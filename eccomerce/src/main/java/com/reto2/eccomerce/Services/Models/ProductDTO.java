@@ -5,14 +5,6 @@ public class ProductDTO {
     private double precio;
     private String img;
 
-    public ProductDTO(){}
-
-    public ProductDTO(String nombre, double precio, String img) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.img = img;
-    }
-
     public String getNombre() {
         return nombre;
     }
