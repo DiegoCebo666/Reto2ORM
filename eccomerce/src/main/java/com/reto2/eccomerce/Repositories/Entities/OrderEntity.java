@@ -36,8 +36,9 @@ public class OrderEntity {
     public String getFecha() {
         return fecha;
     }
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFecha() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        this.fecha = formatter.format(new Date());
     }
     public String getUsername() {
         return username;

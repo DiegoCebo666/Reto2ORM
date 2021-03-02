@@ -6,35 +6,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import java.util.ArrayList;
-
 @Table(name="OrderProducts")
 @Entity(name="OrderProducts")
 public class OrderProductEntity {
     @Id
     @GeneratedValue
     private Long id;
-    private int idorder;
-    private int idproduct;
+    private Long idorder;
+    private Long idproduct;
     private int quantity;
 
     public OrderProductEntity(){}
 
-    public OrderProductEntity(int idorder, int idproduct, int quantity){
+    public OrderProductEntity(Long idorder, Long idproduct, int quantity){
         this.idorder = idorder;
         this.idproduct = idproduct;
         this.quantity = quantity;
     }
-    public int getIdorder() {
+    public Long getIdorder() {
         return idorder;
     }
-    public void setIdorder(int idorder) {
+    public void setIdorder(Long idorder) {
         this.idorder = idorder;
     }
-    public int getIdproduct() {
+    public Long getIdproduct() {
         return idproduct;
     }
-    public void setIdproduct(int idproduct) {
+    public void setIdproduct(Long idproduct) {
         this.idproduct = idproduct;
     }
     public int getQuantity() {

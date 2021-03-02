@@ -1,6 +1,5 @@
 package com.reto2.eccomerce.Web.Config;
 
-import com.reto2.eccomerce.Services.Models.OrderProductService;
 import com.reto2.eccomerce.Services.Models.OrderService;
 import com.reto2.eccomerce.Services.Models.ProductService;
 
@@ -19,11 +18,6 @@ public class DI {
     @Bean
     OrderService createOrderService(){
         return new OrderService();
-    }
-    
-    @Bean
-    OrderProductService createOrderProductService() {
-        return new OrderProductService();
     }
 
     @Bean

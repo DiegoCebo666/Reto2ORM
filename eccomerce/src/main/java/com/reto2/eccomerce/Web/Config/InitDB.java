@@ -1,7 +1,9 @@
 package com.reto2.eccomerce.Web.Config;
 
 import com.reto2.eccomerce.Repositories.Entities.OrderEntity;
+import com.reto2.eccomerce.Repositories.Entities.OrderProductEntity;
 import com.reto2.eccomerce.Repositories.Entities.ProductEntity;
+import com.reto2.eccomerce.Repositories.Interfaces.OrderProductsRepository;
 import com.reto2.eccomerce.Repositories.Interfaces.OrdersRepository;
 import com.reto2.eccomerce.Repositories.Interfaces.ProductsRepository;
 
@@ -13,9 +15,12 @@ import org.springframework.context.annotation.Configuration;
 public class InitDB {
 
     @Bean
-    CommandLineRunner initDatabase (OrdersRepository oRepository, ProductsRepository pRepository){
+    CommandLineRunner initDatabase (OrdersRepository oRepository, ProductsRepository pRepository, OrderProductsRepository opRepository){
         return args -> {
-            oRepository.save(new OrderEntity("PIPO", "Enviado"));
+            OrderEntity order = new OrderEntity("PIPO", "Enviado");
+            order.setFecha();
+            oRepository.save(order);
+            opRepository.save(new OrderProductEntity(1L, 1L, 20));
             pRepository.save(new ProductEntity("PIPELUCHE", 14.99, "https://cdn1.peluchilandia.es/3304-home_default/peluche-perrito-melancolico.jpg"));
             pRepository.save(new ProductEntity("PIPOYOYO", 16.99, "https://www.jugarijugar.com/1057-large_default/yo-yo-de-madera-natural.jpg"));
             pRepository.save(new ProductEntity("PIPOCAMELLO", 9.99, "https://www.oasysparquetematico.com/wp-content/uploads/2019/04/shutterstock_199591094.jpg"));
