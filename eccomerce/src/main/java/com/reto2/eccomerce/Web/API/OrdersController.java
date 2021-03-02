@@ -7,6 +7,7 @@ import com.reto2.eccomerce.Services.Models.OrderProductDTO;
 import com.reto2.eccomerce.Services.Models.OrderService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,8 +50,12 @@ public class OrdersController {
 
     @PutMapping("{id}")
     public void putOrder(@PathVariable(name = "id", required = true) Long id, @RequestBody(required = true) List<OrderProductDTO> orderProducts) {
-        OrderDTO order = new OrderDTO();
         orderService.update(id, orderProducts);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteOrder(@PathVariable(name = "id", required = true) Long id) {
+        orderService.delete(id);
     }
 
 

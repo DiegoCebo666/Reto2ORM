@@ -38,7 +38,7 @@ public class OrderService {
     }
 
     public void update(Long id, List<OrderProductDTO> orderProducts){
-        List<OrderProductEntity> orders = modelMapper.map(orderRepository.findOrderProductsById(id), List.class);
+        List<OrderProductEntity> orders = modelMapper.map(orderProductRepository.findOrderProductsById(id), List.class);
         for (OrderProductEntity orderProductEntity : orders) {
             orderProductRepository.delete(orderProductEntity);
         }
@@ -50,15 +50,19 @@ public class OrderService {
         }
     }
 
-    public void delete(Long ID){
-        Optional<OrderEntity> entityToDelete = orderRepository.findById(ID);
+    public void delete(Long id){
+        List<OrderProductEntity> orders = modelMapper.map(orderProductRepository.findOrderProductsById(id), List.class);
+        for (OrderProductEntity orderProductEntity : orders) {
+            orderProductRepository.delete(orderProductEntity);
+        }
+        Optional<OrderEntity> entityToDelete = orderRepository.findById(id);
         if (entityToDelete.isPresent()){
             orderRepository.delete(entityToDelete.get());
         }
     }
 
     public List<OrderProductDTO> findById(Long id){
-        return orderRepository.findOrderProductsById(id).stream().map(x -> modelMapper.map(x, OrderProductDTO.class)).collect(Collectors.toList());
+        return orderProductRepository.findOrderProductsById(id).stream().map(x -> modelMapper.map(x, OrderProductDTO.class)).collect(Collectors.toList());
     }
 
 }

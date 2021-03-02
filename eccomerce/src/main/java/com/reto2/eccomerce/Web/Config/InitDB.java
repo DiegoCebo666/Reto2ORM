@@ -17,7 +17,9 @@ public class InitDB {
     @Bean
     CommandLineRunner initDatabase (OrdersRepository oRepository, ProductsRepository pRepository, OrderProductsRepository opRepository){
         return args -> {
-            oRepository.save(new OrderEntity("PIPO", "Enviado"));
+            OrderEntity order = new OrderEntity("PIPO", "Enviado");
+            order.setFecha();
+            oRepository.save(order);
             opRepository.save(new OrderProductEntity(1L, 1L, 20));
             pRepository.save(new ProductEntity("PIPELUCHE", 14.99, "https://cdn1.peluchilandia.es/3304-home_default/peluche-perrito-melancolico.jpg"));
             pRepository.save(new ProductEntity("PIPOYOYO", 16.99, "https://www.jugarijugar.com/1057-large_default/yo-yo-de-madera-natural.jpg"));
