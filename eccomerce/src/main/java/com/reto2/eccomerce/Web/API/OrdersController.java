@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +43,14 @@ public class OrdersController {
         OrderDTO order = new OrderDTO();
         order.setUsername(name);
         order.setEstado("En Curso");
+        order.setFecha();
         return orderService.add(order, orderProducts);
+    }
+
+    @PutMapping("{id}")
+    public void putOrder(@PathVariable(name = "id", required = true) Long id, @RequestBody(required = true) List<OrderProductDTO> orderProducts) {
+        OrderDTO order = new OrderDTO();
+        orderService.update(id, orderProducts);
     }
 
 

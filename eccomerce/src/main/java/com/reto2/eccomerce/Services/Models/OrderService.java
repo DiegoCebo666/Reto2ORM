@@ -27,7 +27,6 @@ public class OrderService {
 
     public Long add(OrderDTO order, List<OrderProductDTO> orderProducts){
         OrderEntity entityToInsert = modelMapper.map(order, OrderEntity.class);
-        entityToInsert.setFecha();
         OrderEntity result = orderRepository.save(entityToInsert);
         OrderProductEntity entityOPToInsert;
         for (OrderProductDTO orderProduct : orderProducts) {
@@ -38,10 +37,17 @@ public class OrderService {
         return result.getId();
     }
 
-    public OrderDTO update(Long ID, OrderDTO order){
-        OrderEntity entityToUpdate = modelMapper.map(order, OrderEntity.class);
-        OrderEntity result = orderRepository.save(entityToUpdate);
-        return modelMapper.map(result, OrderDTO.class);
+    public void update(Long id, List<OrderProductDTO> orderProducts){
+        List<OrderProductEntity> orders = modelMapper.map(orderRepository.findOrderProductsById(id), List.class);
+        for (OrderProductEntity orderProductEntity : orders) {
+            orderProductRepository.delete(orderProductEntity);
+        }
+        OrderProductEntity entityOPToInsert;
+        for (OrderProductDTO orderProduct : orderProducts) {
+            entityOPToInsert = modelMapper.map(orderProduct, OrderProductEntity.class);
+            entityOPToInsert.setIdorder(id);
+            orderProductRepository.save(entityOPToInsert);
+        }
     }
 
     public void delete(Long ID){

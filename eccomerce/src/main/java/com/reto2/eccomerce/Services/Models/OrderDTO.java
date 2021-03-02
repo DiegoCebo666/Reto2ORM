@@ -1,5 +1,8 @@
 package com.reto2.eccomerce.Services.Models;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class OrderDTO {
     private String fecha;
     private String username;
@@ -8,8 +11,9 @@ public class OrderDTO {
     public String getFecha() {
         return fecha;
     }
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFecha() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        this.fecha = formatter.format(new Date());
     }
     public String getUsername() {
         return username;
