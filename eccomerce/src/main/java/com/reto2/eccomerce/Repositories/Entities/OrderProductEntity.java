@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import java.util.ArrayList;
-
 @Table(name="OrderProducts")
 @Entity(name="OrderProducts")
 public class OrderProductEntity {

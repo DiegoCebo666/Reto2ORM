@@ -8,6 +8,7 @@ import com.reto2.eccomerce.Repositories.Entities.OrderEntity;
 import com.reto2.eccomerce.Repositories.Entities.OrderProductEntity;
 import com.reto2.eccomerce.Repositories.Interfaces.OrderProductsRepository;
 import com.reto2.eccomerce.Repositories.Interfaces.OrdersRepository;
+import com.reto2.eccomerce.Web.API.ElementNotFoundException;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class OrderService {
     }
 
     public void update(Long id, List<OrderProductDTO> orderProducts){
-        List<OrderProductEntity> orders = modelMapper.map(orderProductRepository.findOrderProductsById(id), List.class);
+        List<OrderProductEntity> orders = modelMapper.map(findById(id), List.class);
         for (OrderProductEntity orderProductEntity : orders) {
             orderProductRepository.delete(orderProductEntity);
         }
@@ -51,7 +52,7 @@ public class OrderService {
     }
 
     public void delete(Long id){
-        List<OrderProductEntity> orders = modelMapper.map(orderProductRepository.findOrderProductsById(id), List.class);
+        List<OrderProductEntity> orders = modelMapper.map(findById(id), List.class);
         for (OrderProductEntity orderProductEntity : orders) {
             orderProductRepository.delete(orderProductEntity);
         }
@@ -62,7 +63,12 @@ public class OrderService {
     }
 
     public List<OrderProductDTO> findById(Long id){
-        return orderProductRepository.findOrderProductsById(id).stream().map(x -> modelMapper.map(x, OrderProductDTO.class)).collect(Collectors.toList());
+        List<OrderProductDTO> list = orderProductRepository.findOrderProductsById(id).stream().map(x -> modelMapper.map(x, OrderProductDTO.class)).collect(Collectors.toList());
+        if(list.isEmpty()){
+            throw new ElementNotFoundException();
+        }else{
+            return list;
+        }
     }
 
 }
