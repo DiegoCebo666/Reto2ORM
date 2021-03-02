@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +35,14 @@ public class OrdersController {
     @GetMapping("{id}")
     public List<OrderProductDTO> getOrderById(@PathVariable(name = "id", required = true) Long id) {
         return orderService.findById(id);
+    }
+
+    @PostMapping("{name}")
+    public Long postOrderWithProducts(@PathVariable(name = "name", required = true) String name, @RequestBody(required = true) List<OrderProductDTO> orderProducts) {
+        OrderDTO order = new OrderDTO();
+        order.setUsername(name);
+        order.setEstado("En Curso");
+        return orderService.add(order, orderProducts);
     }
 
 
