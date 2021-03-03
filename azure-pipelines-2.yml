@@ -1,0 +1,43 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- '*'
+
+variables:
+  buildConfiguration: 'Release'
+  webRepository: 'web'
+  tag: '$(Build.BuildId)'
+
+stages:
+  - stage: 'Build'
+    displayName: 'Build and push'
+    jobs:  
+    - job: 'Build'
+      displayName: 'Build job'
+      pool:
+        vmImage: 'ubuntu-18.04'
+        steps:
+        - task: Docker@2
+          displayName: 'Build and push the image to container registry'
+          inputs:
+            command: buildAndPush
+            buildContext: $(Build.Repository.LocalPath)
+            repository: $(webRepository)
+            dockerfile: '$(Build.SourcesDirectory)/eccomerce/Dockerfile'
+            containerRegistry: 'Container Registry Connection'
+            tags: |
+              $(tag)
+
+  - stage: 'Deploy'
+    displayName: 'Deploy the container'
+    dependsOn: Build
+    jobs:
+    - job: 'Deploy'
+      displayName: 'Deploy job'
+      pool:
+        vmImage: 'ubuntu-18.04'
+      variables:
+      - group: Release
