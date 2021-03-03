@@ -21,6 +21,10 @@ public class ProductService {
         return productRepository.findAll().stream().map(x -> modelMapper.map(x, ProductDTO.class)).collect(Collectors.toList());
     }
 
+    public List<ProductEntity> getAllEntities(){
+        return productRepository.findAll().stream().collect(Collectors.toList());
+    }
+
     public ProductDTO add(ProductDTO product){
         ProductEntity entityToInsert = modelMapper.map(product, ProductEntity.class);
         ProductEntity result = productRepository.save(entityToInsert);

@@ -48,12 +48,12 @@ public class OrdersController {
         return orderService.add(order, orderProducts);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("update/{id}")
     public void putOrder(@PathVariable(name = "id", required = true) Long id, @RequestBody(required = true) List<OrderProductDTO> orderProducts) {
         orderService.update(id, orderProducts);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteOrder(@PathVariable(name = "id", required = true) Long id) {
         orderService.delete(id);
     }
