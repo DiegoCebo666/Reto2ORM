@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- feature/Reto2Ej5
+
+resources:
+- repo: self
+
+variables:
+  dockerfilePath: '$(Build.SourcesDirectory)/src/Dockerfile'
+  webRepository: 'web'
+  tag: '$(Build.BuildId)'
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: Build and publish Java container
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    variables:
+    - group: Release
+    steps:
+    - task: Gradle@2
+      displayName: 'Graddle build.gradle'
+      inputs:
+        options: '-DskipITs --settings ./settings.gradle'
+        publishJUnitResults: false
