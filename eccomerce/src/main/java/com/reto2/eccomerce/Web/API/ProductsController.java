@@ -1,9 +1,7 @@
 package com.reto2.eccomerce.Web.API;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.reto2.eccomerce.Repositories.Entities.ProductEntity;
 import com.reto2.eccomerce.Services.Models.ProductDTO;
 import com.reto2.eccomerce.Services.Models.ProductService;
 
@@ -28,11 +26,4 @@ public class ProductsController {
     public List<ProductDTO> getProducts() {
         return productService.getAll();
     }
-
-    // public static Product findProdById(int id){
-    //     for (int i = 0; i < products.size(); i++) {
-    //         if(products.get(i).getId() == id) return products.get(i);
-    //     }
-    //     throw new ElementNotFoundException();
-    // }
 }
